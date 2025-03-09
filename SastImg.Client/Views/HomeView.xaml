@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel>
             <TextBlock
-                Margin="56,40"
+                Margin="56,30"
                 Style="{ThemeResource TitleLargeTextBlockStyle}"
                 Text="SAST Image" />
         </StackPanel>

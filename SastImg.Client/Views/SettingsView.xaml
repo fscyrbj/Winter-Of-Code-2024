@@ -11,8 +11,8 @@
 
     <Grid>
         <TextBlock
-            Margin="40"
-            Style="{ThemeResource TitleTextBlockStyle}"
-            Text="设置" />
+            Margin="56,30"
+            Style="{ThemeResource TitleLargeTextBlockStyle}"
+            Text="Settings"/>
     </Grid>
 </Page>

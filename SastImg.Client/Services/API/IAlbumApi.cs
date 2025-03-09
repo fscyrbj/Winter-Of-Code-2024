@@ -360,6 +360,7 @@ namespace SastImg.Client.Service.API
         [Headers("Accept: text/plain, application/json, text/json")]
         [Get("/api/albums/removed")]
         Task<IApiResponse<ICollection<RemovedAlbumDto>>> GetRemovedAlbumsAsync(CancellationToken cancellationToken = default);
+        
     }
 
 }

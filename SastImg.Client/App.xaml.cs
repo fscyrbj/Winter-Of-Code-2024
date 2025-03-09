@@ -13,10 +13,12 @@ namespace SastImg.Client;
 
 public partial class App : Application
 {
+    public byte[] ImageData { get; set; }
     public App ( )
     {
         this.InitializeComponent();
         API = new SastImgAPI("http://sastwoc2024.shirasagi.space:5263/");
+        
     }
 
     protected override void OnLaunched (Microsoft.UI.Xaml.LaunchActivatedEventArgs args)

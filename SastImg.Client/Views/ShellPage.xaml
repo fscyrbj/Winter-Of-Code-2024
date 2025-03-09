@@ -33,6 +33,14 @@
                     Content="主页"
                     Icon="Home"
                     Tag="Home" />
+                <NavigationViewItem
+                    Content="相册"
+                    Icon="Folder"
+                    Tag="Album"/>
+                <NavigationViewItem
+                    Content="图片"
+                    Icon="Pictures"
+                    Tag="Image"/>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem
@@ -48,7 +56,7 @@
                     Icon="Setting"
                     Tag="Settings" />
             </NavigationView.FooterMenuItems>
-            <Frame x:Name="MainFrame" />
+            <Frame x:Name="MainFrame" x:FieldModifier="public"/>
         </NavigationView>
 
         <Grid ui:UIElementExtensions.ClipToBounds="False">
@@ -59,6 +67,7 @@
                 CompactStateBreakpoint="720"
                 DisplayMode="Tall"
                 IsBackButtonVisible="{x:Bind MainFrame.CanGoBack, Mode=OneWay}"
+                BackButtonClick="TitleBar_BackButtonClick"
                 IsPaneButtonVisible="False"
                 Subtitle="Dev"
                 Window="{x:Bind local:App.MainWindow}">
@@ -75,7 +84,6 @@
                             <StackPanel Orientation="Vertical" Spacing="4">
                                 <cc:IconButton
                                     HorizontalAlignment="Stretch"
-                                    IsEnabled="False"
                                     Style="{StaticResource TransparentIconButtonStyle}">
                                     <cc:IconButton.Icon>
                                         <FontIcon Glyph="&#xE8A6;" />

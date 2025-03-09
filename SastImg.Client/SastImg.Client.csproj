@@ -18,6 +18,10 @@
 
     <ItemGroup>
         <Content Include="Assets\**" />
+        <None Remove="Views\AlbumView.xaml" />
+        <None Remove="Views\Dialogs\CreateAlbumDialog.xaml" />
+        <None Remove="Views\Dialogs\InformationDialog.xaml" />
+        <None Remove="Views\ImageView.xaml" />
         <Manifest Include="$(ApplicationManifest)" />
         <ProjectCapability Include="Msix" />
         <PackageReference Include="CommunityToolkit.Labs.WinUI.TitleBar" Version="0.0.1-build.1830" />
@@ -39,5 +43,29 @@
 
     <ItemGroup>
       <Folder Include="Services\API\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Views\Dialogs\InformationDialog.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Views\ImageView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Views\Dialogs\CreateAlbumDialog.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Views\AlbumView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 </Project>

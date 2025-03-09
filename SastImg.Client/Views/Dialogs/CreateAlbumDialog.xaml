@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="SastImg.Client.Views.Dialogs.CreateAlbumDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SastImg.Client.Views.Dialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Create Album"  
+    PrimaryButtonText="创建"
+    CloseButtonText="取消"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+
+        <StackPanel Orientation="Vertical" Spacing="12">
+            <TextBox 
+                x:Name="TitleTextBox" 
+                PlaceholderText="名称" 
+                Margin="0,0,0,20"
+                Text="{x:Bind createAlbumDialogMode.albumTitle, Mode=TwoWay}"/>
+            <TextBox 
+                x:Name="DescriptionTextBox" 
+                PlaceholderText="详情" 
+                AcceptsReturn="True" 
+                Height="100" 
+                Margin="0,0,0,20"
+                Text="{x:Bind createAlbumDialogMode.albumDescription, Mode=TwoWay}"/>
+            <ComboBox
+                ItemsSource="{x:Bind createAlbumDialogMode.Categories, Mode=OneWay}"
+                DisplayMemberPath="Name"
+                SelectedItem="{x:Bind createAlbumDialogMode.selectedCategory, Mode=TwoWay}"
+                x:Name="CategoryComboBox" 
+                PlaceholderText="选择分类"
+                Margin="0,0,0,20"/>
+        </StackPanel>
+    </Grid>        
+</ContentDialog>

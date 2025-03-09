@@ -1,5 +1,6 @@
 using System.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -60,7 +61,9 @@ public sealed partial class LoginDialog : ContentDialog
                         CloseButtonText="È·¶¨"
                     };
                     var _ = successDialog.ShowAsync();
+                    
                 };
+                
             }
             else
             {

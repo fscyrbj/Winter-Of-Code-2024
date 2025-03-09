@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="SastImg.Client.Views.AlbumView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SastImg.Client.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <StackPanel  Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                <TextBlock
+                Margin="56,30,0,0"
+                Style="{ThemeResource TitleLargeTextBlockStyle}"
+                Text="Album"/>
+                <Button
+                Margin="15,33,0,0"
+                Content="Creat Album"
+                Click="Button_Click"/>
+            </StackPanel>
+            <ListView Grid.Row="1" x:Name="AlbumsItemsControl" ItemsSource="{x:Bind ViewModel.Albums}" SelectedItem="{x:Bind ViewModel.SelectedAlbum,Mode=TwoWay}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate xmlns:api="using:SastImg.Client.Service.API" x:DataType="api:AlbumDto">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind Author}" Margin="16,5,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <Grid Grid.Column="1" Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{ThemeResource TitleLargeTextBlockStyle}" Text="Album Details" Margin="0,10,0,16"/>
+                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                        <Button x:Name="PickAPhotoButton" Content="Add Picture" Click="PickAPhotoButton_Click" Margin="20,22,0,10"/>
+                        <TextBlock x:Name="PickAPhotoOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                <ContentControl Content="{x:Bind ViewModel.SelectedAlbum, Mode=TwoWay}">
+                    <ContentControl.ContentTemplate>
+                        <DataTemplate xmlns:api="using:SastImg.Client.Service.API" x:DataType="api:AlbumDto">
+                            <StackPanel>
+                                <TextBlock Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,8"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="Author: " Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
+                                    <TextBlock Text="{x:Bind Author}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="ID: " Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
+                                    <TextBlock Text="{x:Bind Id}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ContentControl.ContentTemplate>
+                </ContentControl>
+                <ContentControl Content="{x:Bind ViewModel.SelectedDetailedAlbum, Mode=TwoWay}">
+                    <ContentControl.ContentTemplate>
+                        <DataTemplate xmlns:api="using:SastImg.Client.Service.API" x:DataType="api:DetailedAlbum">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                <TextBlock Text="Description: " Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
+                                <TextBlock Text="{x:Bind Description}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ContentControl.ContentTemplate>
+                </ContentControl>
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="1">
+                <ListView ItemsSource="{x:Bind ViewModel.Images}" SelectedItem="{x:Bind ViewModel.SelectedImage, Mode=TwoWay}" ItemClick="Image_Click" IsItemClickEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate xmlns:api="using:SastImg.Client.Service.API" x:DataType="api:ImageDto">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                                <TextBlock Text="{x:Bind Id}" Margin="16,5,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

@@ -25,6 +25,9 @@
             Text="{x:Bind Password, Mode=TwoWay}"
             PlaceholderText="密码" />
         <TextBlock
-            Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="登录错误，请重试" Visibility="{x:Bind IsLoginFailed, Mode=OneWay}" />
+            Style="{ThemeResource CaptionTextBlockStyle}" 
+            Foreground="{ThemeResource SystemFillColorCriticalBrush}" 
+            Text="登录错误，请重试" 
+            Visibility="{x:Bind IsLoginFailed, Mode=OneWay}" />
     </StackPanel>
 </ContentDialog>
